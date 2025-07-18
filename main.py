@@ -3,6 +3,7 @@ import sys
 from dotenv import load_dotenv
 from google import genai
 from google.genai import types
+from config import MAX_CHARACTER_LIMIT
 
 def main():
 	load_dotenv()
