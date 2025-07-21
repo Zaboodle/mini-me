@@ -1,22 +1,25 @@
-from functions.get_file_content import get_file_content
+from functions.run_python_file import run_file
 
 
 def test():
-	result = get_file_content("calculator", "main.py")
-	print("Result for current directory:")
-	print(result)
-	print("")
-
-	result = get_file_content("calculator", "pkg/calculator.py")
-	print("Result for 'pkg' directory:")
+	result = run_file("calculator", "main.py")
+	print("Result for main.py (no arguments):")
 	print(result)
 
-	result = get_file_content("calculator", "/bin/cat")
-	print("Result for '/bin' directory:")
+	result = run_file("calculator", "main.py", ["3 + 5"])
+	print("Result for main.py (3 + 5):")
 	print(result)
 
-	result = get_file_content("calculator", "pkg/does_not_exist")
-	print("Result for '../' directory:")
+	result = run_file("calculator", "tests.py")
+	print("Result for tests.py:")
+	print(result)
+
+	result = run_file("calculator", "../main.py")
+	print("Result for relative path to main.py:")
+	print(result)
+
+	result = run_file("calculator", "nonexistent.py")
+	print("Result for running a nonexistent file:")
 	print(result)
 
 
