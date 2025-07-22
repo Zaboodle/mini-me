@@ -2,10 +2,10 @@ import os
 
 def get_files_info(working_directory, directory="."):
 	working_path = os.path.abspath(working_directory)
-	target_path = os.path.abspath(os.path.join(working_directory, directory))
+	target_path = os.path.abspath(os.path.join(working_path, directory))
 
-	if target_path.startswith(working_path) == False:
-		return f'Error: Cannot list "{directory}" as it is outside the permitted working directory'
+	if os.path.commonpath([working_path, target_path]) != working_path:
+		return f'Error: Cannot execute "{file_path}" as it is outside the permitted working directory'
 
 	if os.path.isdir(target_path) == False:
 		return f'Error: "{directory}" is not a directory'
